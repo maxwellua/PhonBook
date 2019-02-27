@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-header class="header">
+    <mat-card-title>
+      Edit USERNAME
+    </mat-card-title>
+    <button mat-button (click)="cancelEditing()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="input-holders">
+      <img src="{{newUser.avatar}}" alt="User's avatar..." class="image">
+      <mat-form-field class="input-form-field">
+        <input matInput type="text" placeholder="Name" [(ngModel)]="newUser.firstName">
+        <button mat-button *ngIf="newUser.firstName" matSuffix mat-icon-button aria-label="Clear" (click)="newUser.firstName=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="input-form-field">
+        <input matInput type="text" placeholder="Lastname" [(ngModel)]="newUser.lastName">
+        <button mat-button *ngIf="newUser.lastName" matSuffix mat-icon-button aria-label="Clear" (click)="newUser.lastName=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="input-form-field">
+        <input matInput type="text" placeholder="Phone" [(ngModel)]="newUser.phone">
+        <button mat-button *ngIf="newUser.phone" matSuffix mat-icon-button aria-label="Clear" (click)="newUser.phone=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="button-save">
+      <button mat-button (click)="addUser()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

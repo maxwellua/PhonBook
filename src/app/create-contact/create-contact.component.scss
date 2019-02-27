@@ -1,0 +1,26 @@
+.button-save {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 8px;
+}
+
+.input-form-field {
+  width: 250px;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.input-holders {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
