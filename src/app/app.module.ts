@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DashBoardModule } from './dash-board/dash-board.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactsHttpService } from './common/services/contacts-http.service';
 import { ContactsStorage } from './common/services/exchange-data.service';
@@ -15,7 +15,7 @@ import { ContactsStorage } from './common/services/exchange-data.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DashBoardModule,
+    DashboardModule,
     HttpClientModule
   ],
   providers: [ContactsHttpService, ContactsStorage],

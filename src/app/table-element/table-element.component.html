@@ -7,15 +7,19 @@
       <div class="user-phone">{{contact.phone}}</div>
     </div>
     <div>
-      <button mat-icon-button [matMenuTriggerFor]="menu" class="menuButton">
+      <button mat-icon-button
+              [matMenuTriggerFor]="menu"
+              class="menuButton">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editClick(contact)">
+        <button mat-menu-item
+                (click)="editClick(contact)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item (click)="deleteClick(contact.id)">
+        <button mat-menu-item
+                (click)="deleteClick(contact.id)">
           <mat-icon>delete</mat-icon>
           <span>Delete</span>
         </button>

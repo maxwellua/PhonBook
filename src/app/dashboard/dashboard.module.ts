@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material';
 
-import { DashBoardComponent } from './dash-board.component';
+import { DashboardComponent } from './dashboard.component';
 import { EditContactModule } from '../edit-contact/edit-contact.module';
 import { TableModule } from '../table/table.module';
 import { CreateContactModule } from '../create-contact/create-contact.module';
 
 @NgModule({
   declarations: [
-    DashBoardComponent
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -19,8 +19,8 @@ import { CreateContactModule } from '../create-contact/create-contact.module';
     MatIconModule
   ],
   exports: [
-    DashBoardComponent
+    DashboardComponent
   ],
 })
-export class DashBoardModule {
+export class DashboardModule {
 }

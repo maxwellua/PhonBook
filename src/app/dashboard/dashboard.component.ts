@@ -5,10 +5,10 @@ import { ContactsHttpService } from '../common/services/contacts-http.service';
 
 @Component({
   selector: 'app-dash-board',
-  templateUrl: 'dash-board.component.html',
-  styleUrls: ['dash-board.component.scss'],
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.scss'],
 })
-export class DashBoardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   contacts: Contact[] = [
     new Contact(1, 'Ivan', 'Golopupenko', 'someURL', '111-222-333'),
     new Contact(2, 'Fedor', 'Smith', 'someURL', '231-665-343'),
