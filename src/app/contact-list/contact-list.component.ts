@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Contact } from '../common/services/contact.service';
+import { IContact } from '../common/models/contact.model';
 
 @Component({
   selector: 'app-table',
@@ -8,5 +8,5 @@ import { Contact } from '../common/services/contact.service';
 })
 
 export class TableComponent {
-  @Input() contactList: Contact[];
+  @Input() contactsList: IContact[];
 }
