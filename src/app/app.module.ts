@@ -1,12 +1,25 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { HttpClientModule } from '@angular/common/http';
-import { ContactsHttpService } from './common/services/contacts-http.service';
-import { ContactsStorage } from './common/services/exchange-data.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AboutComponent } from './about/about.component';
+import { CreateContactComponent } from './create-contact/create-contact.component';
+import { AboutModule } from './about/about.module';
+import { ContactDetailsComponent } from './contact-details/contact-details.component';
+
+const appRoutes: Routes = [
+  {path: '', component: DashboardComponent},
+  {path: 'add', component: CreateContactComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'contact/:id', component: ContactDetailsComponent},
+  {path: '**', redirectTo: '/'},
+];
 
 @NgModule({
   declarations: [
@@ -14,12 +27,17 @@ import { ContactsStorage } from './common/services/exchange-data.service';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     DashboardModule,
-    HttpClientModule
+    AboutModule,
+    FormsModule,
   ],
-  providers: [ContactsHttpService, ContactsStorage],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 }

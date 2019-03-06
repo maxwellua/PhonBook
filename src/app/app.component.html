@@ -1,1 +1,19 @@
-<app-dash-board></app-dash-board>
+<div>
+  <a class="router-links" [routerLink]="['', 'undefined']">
+    Show All
+  </a>
+  <a class="router-links" routerLink="/about">
+    About
+  </a>
+  <div>
+    <input class="id-filter"
+           type="text"
+           placeholder="Enter ID"
+           [(ngModel)]="id"
+           required>
+    <button (click)="getOne()">
+      Get Contact
+    </button>
+  </div>
+</div>
+<router-outlet></router-outlet>

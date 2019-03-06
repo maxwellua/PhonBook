@@ -1,68 +1,81 @@
-<mat-card>
-  <mat-card-header class="header">
-    <mat-card-title>
-      Create a contact
-    </mat-card-title>
-    <button mat-button
-            (click)="cancelEditing()">
-      <mat-icon>clear</mat-icon>
-    </button>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="input-holders">
-      <img src="{{newUser.avatar}}"
-           alt="User's avatar..."
-           class="image">
-      <mat-form-field class="input-form-field">
-        <input matInput
-               type="text"
-               placeholder="Name"
-               [(ngModel)]="newUser.firstName">
-        <button mat-button
-                *ngIf="newUser.firstName"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
-                (click)="newUser.firstName=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field class="input-form-field">
-        <input matInput
-               type="text"
-               placeholder="Lastname"
-               [(ngModel)]="newUser.lastName">
-        <button mat-button
-                *ngIf="newUser.lastName"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
-                (click)="newUser.lastName=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field class="input-form-field">
-        <input matInput
-               type="text"
-               placeholder="Phone"
-               [(ngModel)]="newUser.phone">
-        <button mat-button
-                *ngIf="newUser.phone"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
-                (click)="newUser.phone=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <div class="button-save">
+<form [formGroup]="contactCreateForm">
+  <mat-card>
+    <mat-card-header class="header">
+      <mat-card-title>
+        Create a contact
+      </mat-card-title>
       <button mat-button
-              (click)="addUser()">
-        <mat-icon>save</mat-icon>
+              (click)="cancelEditing()"
+              class="ico-button">
+        <mat-icon>
+          clear
+        </mat-icon>
       </button>
-    </div>
-  </mat-card-actions>
-</mat-card>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="input-holders">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFAjJFXMlocD0LvASU7mGlQCR_Nm0ULkxgmBeOxJd12yR3RE0y"
+             alt="User's avatar..."
+             class="image">
+        <mat-form-field class="input-form-field">
+          <input matInput
+                 maxlength="50"
+                 autofocus
+                 type="text"
+                 class="input-text-overflow"
+                 placeholder="Name"
+                 formControlName="firstName">
+          <mat-error *ngIf="contactCreateForm.controls.firstName.invalid">
+            {{getErrorMessage(contactCreateForm.controls.firstName)}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-form-field">
+          <input matInput
+                 maxlength="50"
+                 type="text"
+                 class="input-text-overflow"
+                 placeholder="Lastname"
+                 formControlName="lastName">
+          <mat-error *ngIf="contactCreateForm.controls.lastName.invalid">
+            {{getErrorMessage(contactCreateForm.controls.lastName)}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-form-field"
+                        hintLabel="At least 9 digits">
+          <input matInput
+                 maxlength="20"
+                 type="text"
+                 class="input-text-overflow"
+                 placeholder="Phone"
+                 formControlName="phone">
+          <mat-error *ngIf="contactCreateForm.controls.phone.invalid">
+            {{getErrorMessage(contactCreateForm.controls.phone)}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-form-field">
+          <input matInput
+                 maxlength="50"
+                 type="text"
+                 class="input-text-overflow"
+                 placeholder="Email"
+                 formControlName="email">
+          <mat-error *ngIf="contactCreateForm.controls.email.invalid">
+            {{getErrorMessage(contactCreateForm.controls.email)}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-save">
+        <button mat-button
+                (click)="addContact()"
+                [disabled]="!contactCreateForm.valid"
+                class="ico-button">
+          <mat-icon>
+            save
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</form>

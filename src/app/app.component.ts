@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ContactsService } from './common/services/contacts.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PhoneBook';
+  private title = 'PhoneBook';
+  private id;
+
+  constructor(private contactsHttpService: ContactsService,
+              private router: Router) {
+  }
+
+  private getOne() {
+    this.contactsHttpService.getContacts(this.id)
+      .subscribe( contact => {
+        console.log(contact);
+        this.router.navigate(['/contact/' + this.id], {queryParams: {data: JSON.stringify(contact)}});
+    });
+  }
 }

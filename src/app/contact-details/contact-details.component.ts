@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { IContact } from '../common/models/contact.model';
@@ -6,49 +6,61 @@ import { EditContactComponent } from '../edit-contact/edit-contact.component';
 import { ContactsService } from '../common/services/contacts.service';
 import { ExchangeDataService } from '../common/services/exchange-data.service';
 import { requestToUpdate } from '../common/services/constants/requestCommands';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-table-element',
-  templateUrl: 'table-element.component.html',
-  styleUrls: ['table-element.component.scss'],
+  selector: 'app-contact-details-element',
+  templateUrl: 'contact-details.component.html',
+  styleUrls: ['contact-details.component.scss'],
 })
-export class TableElementComponent {
+export class ContactDetailsComponent implements OnInit{
   @Input() contact: IContact;
+
+  private id;
 
   constructor(public dialog: MatDialog,
               private contactsHttpService: ContactsService,
-              private exchangeDataService: ExchangeDataService) {
+              private exchangeDataService: ExchangeDataService,
+              private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    if (!this.contact) {
+      this.activatedRoute.queryParams
+        .subscribe( params => {
+          this.contact = JSON.parse(params.data);
+        });
+    }
   }
 
   openDialog() {
-    const {firstName, lastName, phone} = this.contact;
     const dialogRef = this.dialog.open(EditContactComponent, {
-      width: '1300px',
-      data: this.contact
+      width: '1400px',
+      data: this.contact,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result) {
         this.contactsHttpService.updateContact(result)
-          .subscribe(data => console.log(data));
-        this.exchangeDataService.requestDataUpdate.next(requestToUpdate.contactList);
-      } else {
-        this.contact.firstName = firstName;
-        this.contact.lastName = lastName;
-        this.contact.phone = phone;
+          .subscribe(data => {
+            console.log(data);
+            this.exchangeDataService.requestDataUpdate.next(requestToUpdate.contactList);
+          });
       }
     });
   }
 
-  editClick() {
+  editContact() {
     this.openDialog();
   }
 
-  deleteClick(contactID: number) {
+  deleteContact(contactID: number) {
     this.contactsHttpService.deleteContact(contactID)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        console.log(data);
+        this.exchangeDataService.requestDataUpdate.next(requestToUpdate.contactList);
+      });
     console.log('Deleted contact with ID: ' + contactID);
-    this.exchangeDataService.requestDataUpdate.next(requestToUpdate.contactList);
   }
 }

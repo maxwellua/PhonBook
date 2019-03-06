@@ -1,16 +1,20 @@
 <h1>Dashboard</h1>
 <div>
-  <button mat-button
-          *ngIf="!createMode"
-          (click)="toggleEditMode()">
-    <mat-icon>add_circle_outline</mat-icon>
-  </button>
-  <app-create *ngIf="createMode"
-              (action)="toggleEditMode()"
-              class="create-board">
-  </app-create>
+  <div>
+    <button mat-button
+            *ngIf="!createMode"
+            (click)="toggleEditMode()"
+            class="add-button">
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+  </div>
+
+  <!--<app-create *ngIf="createMode"-->
+              <!--(action)="toggleEditMode()"-->
+              <!--class="create-board">-->
+  <!--</app-create>-->
 </div>
 <div>
-  <app-table [contactList]="contacts">
-  </app-table>
+  <app-contact-list [contactsList]="contactsList">
+  </app-contact-list>
 </div>

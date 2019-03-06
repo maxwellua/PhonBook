@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { TableComponent } from './table.component';
+import { ContactListComponent } from './contact-list.component';
 import { CommonModule } from '@angular/common';
-import { TableElementModule } from '../table-element/table-element.module';
+import { ContactDetailsModule } from '../contact-details/contact-details.module';
 
 @NgModule({
   declarations: [
-    TableComponent
+    ContactListComponent
   ],
   imports: [
     CommonModule,
-    TableElementModule
+    ContactDetailsModule
   ],
   exports: [
-    TableComponent
+    ContactListComponent
   ]
 })
-export class TableModule {
+export class ContactListModule {
 }

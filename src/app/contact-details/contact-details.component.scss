@@ -1,4 +1,4 @@
-.tableLine {
+.contact-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,7 +6,7 @@
   padding: 5px;
 }
 
-.userList {
+.contact-list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -14,23 +14,37 @@
   width: 90%;
 }
 
-.user-logo {
+.contact-line>div>* {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-logo {
   width: 50px;
   height: 50px;
 }
 
-.user-name {
-  width: 300px;
+.contact-name {
+  width: 250px;
 }
 
-.user-lastname {
-  width: 300px;
+.contact-lastname {
+  width: 250px;
 }
 
-.user-phone {
-  width: 300px;
+.contact-phone {
+  width: 250px;
+}
+
+.contact-email {
+  width: 250px;
 }
 
 .item-holder {
   margin: 5px;
+}
+
+.ico-button {
+border: none;
+background: none;
 }

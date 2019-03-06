@@ -1,20 +1,7 @@
-import { Injectable, OnInit } from '@angular/core';
-import { ContactsHttpService } from './contacts-http.service';
-import { Contact } from './contact.service';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
-export class ContactsStorage implements OnInit {
-  private  contactList: Observable<any>;
-
-  ngOnInit() {
-   this.contactList = this.contactsHttpService.getUsers();
-  }
-
-  constructor(private contactsHttpService: ContactsHttpService) {
-  }
-
-  getContacts() {
-    return this.contactList;
-  }
+export class ExchangeDataService {
+  requestDataUpdate = new Subject<string>();
 }

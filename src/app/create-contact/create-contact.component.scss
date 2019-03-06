@@ -4,14 +4,22 @@
   margin-right: 8px;
 }
 
+.ico-button {
+  border: none;
+  background: none;
+}
+
 .input-form-field {
   width: 250px;
+}
+
+.input-text-overflow {
+  text-overflow: ellipsis;
 }
 
 .image {
   width: 50px;
   height: 50px;
-  border: 1px solid black;
 }
 
 .input-holders {
@@ -23,4 +31,8 @@
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.errors {
+  color: red;
 }

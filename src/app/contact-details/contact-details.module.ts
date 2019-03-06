@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-import { TableElementComponent } from './table-element.component';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule, MatIconModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule, MatIconModule } from '@angular/material';
+
+import { ContactDetailsComponent } from './contact-details.component';
 
 @NgModule({
   declarations: [
-    TableElementComponent
+    ContactDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -17,8 +18,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
   ],
   exports: [
-    TableElementComponent
+    ContactDetailsComponent
   ]
 })
-export class TableElementModule {
+export class ContactDetailsModule {
 }

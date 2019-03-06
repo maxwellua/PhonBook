@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Contact } from './contact.service';
-import { USER_API } from './const/userApi';
+import { CONTACTS_API } from './constants/userApi';
 import { HttpClient } from '@angular/common/http';
+import { IContact } from '../models/contact.model';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class ContactsHttpService {
+export class ContactsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsers() {
-    return this.httpClient.get(USER_API);
+  getContacts(id?: number): Observable<IContact[]> {
+    if (id || id === 0) {
+      return this.httpClient.get<IContact[]>(CONTACTS_API + id);
+    }
+    return this.httpClient.get<IContact[]>(CONTACTS_API);
   }
 
-  createUser(contact: Contact) {
-    return this.httpClient.post(USER_API, contact);
+  createContact(contact: IContact) {
+    return this.httpClient.post(CONTACTS_API, contact);
   }
 
-  updateUser(contact: Contact) {
-    return this.httpClient.put(USER_API + '/' + contact.id, contact);
+  updateContact(contact: IContact) {
+    return this.httpClient.put(CONTACTS_API + contact.id, contact);
   }
 
-  deleteUser(id: number) {
-    return this.httpClient.delete(USER_API + '/' + id);
+  deleteContact(id: number) {
+    return this.httpClient.delete(CONTACTS_API + id);
   }
 }
